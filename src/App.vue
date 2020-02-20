@@ -1,39 +1,42 @@
 <template>
   <div id="app">
+    <!-- Background video for the application -->
     <video autoplay muted loop class="position-fixed" id="bgVid">
       <source src="./assets/vid/backgroundVid.mp4" type="video/mp4" />
     </video>
+    <!-- container for content -->
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5 mt-2">
-        <span class="navbar-brand h1">DTT</span>
-        <div class="navbar-nav navbar-collapse">
-          <a class="nav-item nav-link active ml-5" href>Home</a>
-          <a class="nav-item nav-link" href>Random</a>
-          <a class="nav-item nav-link" href>About Me</a>
-        </div>
-      </nav>
-      <entry-table :entries="entries" />
+      <base-layout @select:page="displayPage"/>
+      <!-- select active components -->
+      <div v-if=" active === 'home' ">
+        <entry-table :entries="entries" />
+      </div>
+
     </div>
   </div>
 </template>
 
 <script>
 import EntryTable from "./components/EntryTable.vue";
+import BaseLayout from "./components/BaseLayout.vue";
 
 export default {
   name: "App",
   components: {
-    EntryTable
+    EntryTable,
+    BaseLayout,
   },
   mounted() {
     this.getAPIs();
   },
   data() {
     return {
-      entries: []
+      entries: [],
+      active: "home",
     };
   },
   methods: {
+    // fetches 10 random public apis to display
     async getAPIs() {
       for (let i = 0; i < 10; i++) {
         const response = await fetch("https://api.publicapis.org/random");
@@ -42,6 +45,10 @@ export default {
         const newEntry = { ...data["entries"][0], id };
         this.entries = [...this.entries, newEntry];
       }
+    },
+    // parameter is a string passed from the BaseLayout component
+    displayPage(page){
+      this.active = page
     }
   }
 };
@@ -51,5 +58,6 @@ export default {
 #bgVid{
   min-width: 100%;
   min-height: 100%;
+  top: 0%;
 }
 </style>
