@@ -14,18 +14,26 @@
 
 <script>
 export default {
-    name: "entry-table",
-    props: {
-        entries: Array,
+  name: "entry-table",
+  beforeMount() {
+    this.getAPIs();
+  },
+  data() {
+      return{
+        entries: [],
+      }
+  },
+  methods:{
+    async getAPIs() {
+      for (let i = 0; i < 10; i++) {
+        const response = await fetch("https://api.publicapis.org/random");
+        const data = await response.json();
+        const id = i;
+        const newEntry = { ...data["entries"][0], id };
+        this.entries = [...this.entries, newEntry];
+      }
     },
-    data() {
-        return{
-
-        }
-    },
-    methods:{
-
-    }
+  } 
 }
 </script>
 
