@@ -14,7 +14,7 @@
                   <!-- router links -->
                   <router-link to='/' class="nav-item nav-link">Home</router-link>
                   <router-link to='/category' class="nav-item nav-link">Category</router-link>
-                  <router-link to='/' class="nav-item nav-link">Random</router-link>
+                  <router-link to='/random' class="nav-item nav-link">Random</router-link>
                   <router-link to='/' class="nav-item nav-link">About Me</router-link>
                 </div>
             </nav>

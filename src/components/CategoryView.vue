@@ -14,7 +14,6 @@
         role="button"
         :to="'/category/'+category"
       >{{category}}</router-link>
-      <router-view/>
     </div>
   </div>
 </template>

@@ -35,8 +35,9 @@ export default {
       window.history.length > 1 ? this.$router.go(-1) : this.$router.push("/");
     },
     async getCategoryEntries() {
+      const refinedCategoryName = this.categoryName.charAt("&") == 0 ? this.categoryName : this.categoryName.substring(0, this.categoryName.charAt("&") )  
       const response = await fetch(
-        "https://api.publicapis.org/entries?category=" + this.categoryName
+        "https://api.publicapis.org/entries?category=" + refinedCategoryName
       );
       const data = await response.json();
       this.entries = data["entries"];
