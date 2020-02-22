@@ -1,5 +1,6 @@
 <template>
   <div id="random-entry">
+    <button @click="getRandomEntry"  class="btn btn-secondary btn-lg ml-5 position-fixed">re-roll</button>
     <div class="jumbotron w-50 mx-auto">
       <h1 class="display-4">{{entry.API}}</h1>
       <p class="lead">{{entry.Description}}</p>
@@ -34,6 +35,7 @@
           <p class="ml-3">{{entry.Category}}</p>
         </span>
       </p>
+      
     </div>
   </div>
 </template>
