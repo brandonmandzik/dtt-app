@@ -3,9 +3,9 @@
     <div v-for="entry in entries" :key="entry.id" class="row justify-content-center my-5">
       <div class="card w-50 hoverable">
         <div class="card-body">
-          <router-link :to="{name: 'detailedEntry', params: {entry: entry}}">
-            <h5 class="card-title text-muted">{{entry.API}}</h5>
+          <router-link :to="{name: 'detailedEntry', params: {entry: entry}}" class="stretched-link">
           </router-link>
+            <h5 class="card-title text-muted">{{entry.API}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{entry.Category}}</h6>
           <p class="card-text">{{entry.Description}}</p>
         </div>
@@ -34,7 +34,8 @@ export default {
         const newEntry = { ...data["entries"][0], id };
         this.entries = [...this.entries, newEntry];
       }
-    }
+    },
+    reloadComponent() {}
   }
 };
 </script>

@@ -42,9 +42,9 @@ export default {
     },
     async getCategoryEntries() {
       const refinedCategoryName =
-        this.categoryName.charAt("&") == 0
+        this.categoryName.indexOf("&") == -1
           ? this.categoryName
-          : this.categoryName.substring(0, this.categoryName.charAt("&"));
+          : this.categoryName.substring(0, this.categoryName.indexOf("&"));
       const response = await fetch(
         "https://api.publicapis.org/entries?category=" + refinedCategoryName
       );

@@ -13,7 +13,7 @@ const routes = [
     {path: '/category/:categoryName', component: CategoryEntryTable, props: true},
     {path: '/random', component: RandomEntry},
     {
-        path: '/entry', 
+        path: '/entry/', 
         name: "detailedEntry",
         component: EntryDetailed, 
         props: true
