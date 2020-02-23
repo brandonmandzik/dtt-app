@@ -15,7 +15,7 @@
               <router-link to="/" class="nav-item nav-link mr-2">Home</router-link>
               <router-link to="/category" class="nav-item nav-link mx-2">Category</router-link>
               <router-link to="/random" class="nav-item nav-link mx-2">Random</router-link>
-              <router-link to="/" class="nav-item nav-link mx-2">About Me</router-link>
+              <router-link to="/about" class="nav-item nav-link mx-2">About Me</router-link>
             </div>
           </nav>
         </div>
@@ -36,7 +36,9 @@
               <td class="py-2 text-center">
                 <router-link class="text-muted" to="/">{{paths[0].displayName}}</router-link>
               </td>
-              <td class="py-2 text-center">About Me</td>
+              <td class="py-2 text-center">
+                <router-link class="text-muted" to="/about">{{paths[4].displayName}}</router-link>
+              </td>
               <td class="py-2 w-25"></td>
             </tr>
             <tr>

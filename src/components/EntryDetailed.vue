@@ -4,7 +4,7 @@
       @click="goBack"
       id="backButton"
       class="btn btn-secondary btn-lg ml-5 position-fixed"
-    >&lt; Back</button>
+    >Back</button>
     <div class="jumbotron w-50 mx-auto" ref="topElement">
       <h1 class="display-4">{{entry.API}}</h1>
       <p class="lead">{{entry.Description}}</p>

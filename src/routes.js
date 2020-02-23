@@ -4,7 +4,7 @@ import CategoryView from "./components/CategoryView.vue"
 import CategoryEntryTable from "./components/CategoryEntryTable.vue"
 import RandomEntry from "./components/RandomEntry.vue"
 import EntryDetailed from "./components/EntryDetailed.vue"
-
+import AboutMe from "./components/AboutMe.vue"
 
 // route specification
 const routes = [
@@ -12,6 +12,7 @@ const routes = [
     {path: '/category', component: CategoryView, displayName: "Categories"}, 
     {path: '/category/:categoryName', component: CategoryEntryTable, props: true},
     {path: '/random', component: RandomEntry, displayName: "Random Entry"},
+    {path: '/about', component: AboutMe, displayName: "About Me"},
     {
         path: '/entry', 
         name: "detailedEntry",
