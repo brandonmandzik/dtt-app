@@ -8,12 +8,12 @@ import EntryDetailed from "./components/EntryDetailed.vue"
 
 // route specification
 const routes = [
-    {path: '/', component: EntryTable},
-    {path: '/category', component: CategoryView},
+    {path: '/', component: EntryTable, displayName: "Home"},
+    {path: '/category', component: CategoryView, displayName: "Categories"}, 
     {path: '/category/:categoryName', component: CategoryEntryTable, props: true},
-    {path: '/random', component: RandomEntry},
+    {path: '/random', component: RandomEntry, displayName: "Random Entry"},
     {
-        path: '/entry/', 
+        path: '/entry', 
         name: "detailedEntry",
         component: EntryDetailed, 
         props: true

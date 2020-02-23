@@ -5,7 +5,7 @@
       id="backButton"
       class="btn btn-secondary btn-lg ml-5 position-fixed"
     >&lt; Back</button>
-    <div class="jumbotron w-50 mx-auto">
+    <div class="jumbotron w-50 mx-auto" ref="topElement">
       <h1 class="display-4">{{entry.API}}</h1>
       <p class="lead">{{entry.Description}}</p>
       <hr class="my-4" />
@@ -125,6 +125,7 @@ export default {
     async reloadComponent(relatedEntry) {
       this.entry = relatedEntry;
       this.refreshRelatedEntries();
+      window.scrollTo(0,0)
     }
   }
 };
