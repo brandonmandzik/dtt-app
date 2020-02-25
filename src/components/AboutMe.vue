@@ -53,4 +53,16 @@ export default {
 #about-me {
   margin-top: 10%;
 }
+
+@media (max-width: 800px){
+  #about-me{
+    margin-top: 12%;
+  }
+}
+
+@media (max-width: 426px){
+  #about-me{
+    margin-top: 20%;
+  }
+}
 </style>

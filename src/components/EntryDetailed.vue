@@ -5,35 +5,40 @@
       id="backButton"
       class="btn btn-secondary btn-lg ml-5 position-fixed"
     >Back</button>
-    <div class="jumbotron w-50 mx-auto" ref="topElement">
+    <div class="jumbotron w-50 mx-auto" id="entryCard" ref="topElement">
       <h1 class="display-4">{{entry.API}}</h1>
       <p class="lead">{{entry.Description}}</p>
       <hr class="my-4" />
-      <p class="h4 ml-3">
+      <p class="h4 ml-3" id="tableRow">
         API:
         <span class="lead">
           <p class="ml-3">{{entry.Auth}}</p>
         </span>
       </p>
-      <p class="h4 ml-3">
+      <p class="h4 ml-3" id="tableRow">
         HTTPS:
         <span class="lead">
           <p class="ml-3">{{entry.HTTPS}}</p>
         </span>
       </p>
-      <p class="h4 ml-3">
+      <p class="h4 ml-3" id="tableRow">
         CORS:
         <span class="lead">
           <p class="ml-3">{{entry.Cors}}</p>
         </span>
       </p>
-      <p class="h4 ml-3">
+      <p class="h4 ml-3" id="tableRow">
         Link:
-        <a :href="entry.Link" class="lead">
-          <p class="ml-3 text-muted">{{entry.Link}}</p>
+        <a :href="entry.Link" target="_blank" class="lead">
+          <p class="ml-3 text-muted" id="linkPlaintext">{{entry.Link}}</p>
+          <button
+            type="button"
+            class="btn btn-secondary btn-sm ml-3 mt-1 d-none"
+            id="linkButton"
+          >Click Me</button>
         </a>
       </p>
-      <p class="h4 ml-3">
+      <p class="h4 ml-3" id="tableRow">
         Category:
         <span class="lead">
           <p class="ml-3">{{entry.Category}}</p>
@@ -87,7 +92,7 @@ export default {
     },
     async getRelatedEntries() {
       const refinedCategoryName =
-        this.entry["Category"].indexOf('&') == -1
+        this.entry["Category"].indexOf("&") == -1
           ? this.entry.Category
           : this.entry.Category.substring(0, this.entry.Category.indexOf("&"));
       const response = await fetch(
@@ -100,7 +105,7 @@ export default {
         this.relatedEntries = [
           ...this.relatedEntries,
           relatedEntriesArray[random]
-        ]
+        ];
       }
     },
     async refreshRelatedEntries() {
@@ -125,7 +130,7 @@ export default {
     async reloadComponent(relatedEntry) {
       this.entry = relatedEntry;
       this.refreshRelatedEntries();
-      window.scrollTo(0,0)
+      window.scrollTo(0, 0);
     }
   }
 };
@@ -135,4 +140,17 @@ export default {
 #entry-detailed {
   padding-top: 10%;
 }
+
+@media (max-width: 800px){
+  #entry-detailed {
+    padding-top: 12%;
+  }
+}
+
+@media (max-width: 426px){
+  #entry-detailed {
+    padding-top: 25%;
+  }
+}
+
 </style>

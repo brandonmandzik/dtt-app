@@ -8,9 +8,20 @@
     <div class="container">
       <div id="navigation-bar">
         <div class="fixed-top">
-          <nav class="container navbar navbar-expand navbar-light bg-light mb-5 mt-2">
-            <span class="navbar-brand h1 mx-5 ">DTT</span>
-            <div class="navbar-nav navbar-collapse">
+          <nav class="container navbar navbar-expand-md navbar-light bg-light mb-5 mt-2">
+            <span class="navbar-brand h1 mx-5">DTT</span>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarToggler"
+              aria-controls="navbarToggler"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-nav navbar-collapse" id="navbarToggler">
               <!-- router links -->
               <router-link to="/" class="nav-item nav-link mr-2">Home</router-link>
               <router-link to="/category" class="nav-item nav-link mx-2">Category</router-link>

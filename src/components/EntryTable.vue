@@ -1,9 +1,9 @@
 <template>
-  <div id="entry-table">
+  <div id="entry-table" class="position-relative">
     <!-- Back Button -->
-    <div class="dropdown">
+    <div class="dropdown position-fixed ml-5">
       <button
-        class="btn btn-lg btn-secondary dropdown-toggle ml-5 position-fixed"
+        class="btn btn-lg btn-secondary dropdown-toggle"
         type="button"
         id="dropdownMenuButton"
         data-toggle="dropdown"
@@ -100,11 +100,47 @@ export default {
   padding-top: 10%;
 }
 
+div.dropdown {
+  z-index: 999;
+}
+
 #infoCard {
   width: 65%;
 }
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+@media (max-width: 992px) {
+  #entry-table {
+    padding-top: 15%;
+  }
+
+  div.dropdown {
+    margin-left: 1rem !important;
+  }
+}
+
+@media (max-width: 800px) {
+  div.dropdown {
+    left: 50%;
+    width: 60%;
+    margin-left: -30% !important;
+    position: relative !important;
+  }
+
+  div.dropdown button {
+    width: 100%;
+  }
+
+  #infoCard {
+    margin-top: 2rem;
+  }
+}
+@media (max-width: 425px) {
+  #entry-table {
+    padding-top: 25%;
+  }
+}
+
+@media (max-width: 375px) {
   #entry-table {
     padding-top: 30%;
   }

@@ -1,15 +1,11 @@
 <template>
   <div id="category-entry-table">
     <div class="justify-content-center">
-      <div class="position-fixed ml-5">
-        <div class="row mb-3">
-          <button
-            @click="goBack"
-            id="backButton"
-            class="btn btn-secondary btn-lg w-100"
-          >Back</button>
+      <div class="position-fixed ml-5" id="CategoryEntryButtons">
+        <div class="row mb-3 ml-1">
+          <button @click="goBack" id="backButton" class="btn btn-secondary btn-lg w-100">Back</button>
         </div>
-        <div class="row">
+        <div class="row ml-1" id="sortButton">
           <div class="dropdown">
             <button
               class="btn btn-lg btn-secondary dropdown-toggle"
@@ -27,7 +23,7 @@
         </div>
       </div>
 
-      <h1 class="text-center">{{categoryName}}</h1>
+      <h1 class="text-center" id="categoryTitle">{{categoryName}}</h1>
       <div v-for="entry in entries" :key="entry.API" class="row justify-content-center my-5">
         <div class="card w-50 hoverable">
           <div class="card-body">
@@ -107,5 +103,42 @@ export default {
 <style>
 #category-entry-table {
   padding-top: 10%;
+}
+
+@media (max-width: 769px) {
+  #category-entry-table {
+    padding-top: 6.0%;
+  }
+
+  #CategoryEntryButtons {
+    position: relative !important;
+    margin-left: 0rem !important;
+    
+  }
+
+  #backButton {
+    visibility: hidden;
+  }
+
+  #sortButton {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+  }
+
+  #categoryTitle{
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 425px) {
+  #category-entry-table {
+    padding-top: 9.0%;
+  }
+}
+
+@media (max-width: 375px) {
+  #category-entry-table {
+    padding-top: 11.5%;
+  }
 }
 </style>

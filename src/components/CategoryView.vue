@@ -6,7 +6,7 @@
         class="lead"
       >api.publicapi.org holds many differenet entries of public APIs, which you can use. Most of these are categorised.</p>
       <hr class="my-4" />
-      <p>Please click a category in order to see matching APIs.</p>
+      <p>Please click on a category in order to see matching APIs.</p>
       <router-link 
         v-for="category in categories"
         :key="category"
@@ -42,5 +42,11 @@ export default {
 <style>
 #category-view {
   padding-top: 8%;
+}
+
+@media (max-width: 425px) {
+  #category-view {
+    padding-top: 25%;
+  }
 }
 </style>
