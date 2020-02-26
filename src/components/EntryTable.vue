@@ -1,6 +1,6 @@
 <template>
   <div id="entry-table" class="position-relative">
-    <!-- Back Button -->
+    <!-- Sort Button -->
     <div class="dropdown position-fixed ml-5">
       <button
         class="btn btn-lg btn-secondary dropdown-toggle"
@@ -15,7 +15,7 @@
         <a @click="sortEntriesDESC" class="dropdown-item">Sort by Name ↓</a>
       </div>
     </div>
-    <!-- Info Card -->
+    <!-- Info Card w/ desc. about the api link -->
     <div class="card text-center mx-auto mb-5" id="infoCard">
       <div class="card-header">api.publicapis.org</div>
       <div class="card-body">
@@ -30,7 +30,7 @@
       </div>
       <div class="card-footer text-muted"></div>
     </div>
-    <!-- Entries -->
+    <!-- Entries - looped -->
     <div v-for="entry in entries" :key="entry.id" class="row justify-content-center mb-5">
       <div class="card w-50 hoverable">
         <div class="card-body">
@@ -52,10 +52,12 @@ export default {
   },
   data() {
     return {
+      // entries - [] of 10 random entries
       entries: []
     };
   },
   methods: {
+    // getAPIs fetches ten times in a loop a random entry and appends to our entries data
     async getAPIs() {
       for (let i = 0; i < 10; i++) {
         const response = await fetch("https://api.publicapis.org/random");
@@ -65,14 +67,17 @@ export default {
         this.entries = [...this.entries, newEntry];
       }
     },
+    // sort entries ascending by name
     async sortEntriesASC() {
       this.entries = this.sortedArrayASC;
     },
+    // sort entries descending by name
     async sortEntriesDESC() {
       this.entries = this.sortedArrayDESC;
     }
   },
   computed: {
+    // the actual sorting functions which return the new array and assigne to the entries data
     sortedArrayASC: function() {
       function compare(a, b) {
         if (a.API < b.API) return -1;
@@ -134,6 +139,7 @@ div.dropdown {
     margin-top: 2rem;
   }
 }
+
 @media (max-width: 425px) {
   #entry-table {
     padding-top: 25%;

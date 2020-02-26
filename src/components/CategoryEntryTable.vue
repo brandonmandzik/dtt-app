@@ -1,10 +1,13 @@
 <template>
   <div id="category-entry-table">
     <div class="justify-content-center">
+      <!-- Util Buttons -->
       <div class="position-fixed ml-5" id="CategoryEntryButtons">
+        <!-- Back Button -->
         <div class="row mb-3 ml-1">
           <button @click="goBack" id="backButton" class="btn btn-secondary btn-lg w-100">Back</button>
         </div>
+        <!-- Sort Button -->
         <div class="row ml-1" id="sortButton">
           <div class="dropdown">
             <button
@@ -22,8 +25,9 @@
           </div>
         </div>
       </div>
-
+      <!-- Title -->
       <h1 class="text-center" id="categoryTitle">{{categoryName}}</h1>
+      <!-- Entries - looped -->
       <div v-for="entry in entries" :key="entry.API" class="row justify-content-center my-5">
         <div class="card w-50 hoverable">
           <div class="card-body">
@@ -46,20 +50,28 @@ export default {
   name: "category-entry-table",
   data() {
     return {
+      // entries - [] of entries with specified category
       entries: []
     };
   },
   props: {
+    // categoryName is passed via URL / props from the router-link
     categoryName: String
   },
   beforeMount() {
+    // getCategoryEntries() fetches corresponding entries before mount
     this.getCategoryEntries();
   },
   methods: {
     goBack() {
+      // goes -1 back in the router history
       window.history.length > 1 ? this.$router.go(-1) : this.$router.push("/");
     },
+    // getCategoryEntries() calls /entries endpoint with specified category name
     async getCategoryEntries() {
+      // categoryName needs to be refind because it can contain two or more words
+      // needs to be checked if "&" is contained
+      // if yes -> use first word
       const refinedCategoryName =
         this.categoryName.indexOf("&") == -1
           ? this.categoryName
@@ -70,6 +82,7 @@ export default {
       const data = await response.json();
       this.entries = data["entries"];
     },
+    // assignes the entries[] data to the computed sorted []
     async sortEntriesASC() {
       this.entries = this.sortedArrayASC;
     },
@@ -78,6 +91,7 @@ export default {
     }
   },
   computed: {
+    // computed functions for returning sorted entries[]
     sortedArrayASC: function() {
       function compare(a, b) {
         if (a.API < b.API) return -1;
@@ -107,13 +121,12 @@ export default {
 
 @media (max-width: 769px) {
   #category-entry-table {
-    padding-top: 6.0%;
+    padding-top: 6%;
   }
 
   #CategoryEntryButtons {
     position: relative !important;
     margin-left: 0rem !important;
-    
   }
 
   #backButton {
@@ -125,14 +138,14 @@ export default {
     margin-right: 0rem !important;
   }
 
-  #categoryTitle{
+  #categoryTitle {
     margin-top: 2rem;
   }
 }
 
 @media (max-width: 425px) {
   #category-entry-table {
-    padding-top: 9.0%;
+    padding-top: 9%;
   }
 }
 

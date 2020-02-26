@@ -6,10 +6,13 @@
     </video>
     <!-- container for content -->
     <div class="container">
+      <!-- Navigation-Bar w/ Brand icon -->
       <div id="navigation-bar">
         <div class="fixed-top">
           <nav class="container navbar navbar-expand-md navbar-light bg-light mb-5 mt-2">
-            <span class="navbar-brand h1 mx-5">DTT</span>
+            <span class="navbar-brand mx-5" id="brandLogo">
+              <router-link to="/" id="brandLogo">DTT</router-link>
+            </span>
             <button
               class="navbar-toggler"
               type="button"
@@ -31,8 +34,9 @@
           </nav>
         </div>
       </div>
-      <!-- component content -->
+      <!-- component content goes inside the router-view -->
       <router-view />
+      <!-- Footer with Sitemape -->
       <footer class="footer mt-auto bg-light pt-3">
         <table class="table table-borderless">
           <tbody>
@@ -80,29 +84,41 @@ import routes from "./routes.js";
 
 export default {
   name: "App",
-  components: {},
   data() {
     return {
+      // paths - [] of routes specified in routes.js
       paths: routes
     };
-  },
-  beforeMount() {},
-  methods: {}
+  }
 };
 </script>
 
 <style>
+/* BackgroundVideo for entire screen */
 #bgVid {
   min-width: 100%;
   min-height: 100%;
   top: 0%;
   z-index: -1;
 }
+
 .footerRow {
   left: 12.5%;
 }
 
 .footerW-33 {
   width: 33.3%;
+}
+
+#brandLogo {
+  font-family: "Damion";
+  padding: 0;
+  font-size: 1.5rem;
+  color: #000 !important;
+}
+
+#brandLogo:hover {
+  color: #000;
+  text-decoration: none;
 }
 </style>

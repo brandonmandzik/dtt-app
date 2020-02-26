@@ -1,37 +1,44 @@
 <template>
   <div id="random-entry">
+    <!-- Reroll Button for larger devices -->
     <button
       @click="getRandomEntry"
       class="btn btn-secondary btn-lg ml-5 position-fixed"
       id="rerollButton"
     >re-roll</button>
+    <!-- Reroll Button for smaller devices -->
     <button
       @click="getRandomEntry"
       class="btn btn-dark btn-lg position-fixed d-none"
       id="rerollButtonSM"
     >🎲</button>
+    <!-- Entry Card -->
     <div class="jumbotron w-50 mx-auto" id="entryCard">
       <h1 class="display-4">{{entry.API}}</h1>
       <p class="lead">{{entry.Description}}</p>
       <hr class="my-4" />
+      <!-- API Row -->
       <p class="h4 ml-3" id="tableRow">
         API:
         <span class="lead">
           <p class="ml-3">{{entry.Auth}}</p>
         </span>
       </p>
+      <!-- HTTPS Row -->
       <p class="h4 ml-3" id="tableRow">
         HTTPS:
         <span class="lead">
           <p class="ml-3">{{entry.HTTPS}}</p>
         </span>
       </p>
+      <!-- CORS Row -->
       <p class="h4 ml-3" id="tableRow">
         CORS:
         <span class="lead">
           <p class="ml-3">{{entry.Cors}}</p>
         </span>
       </p>
+      <!-- Link Row -->
       <p class="h4 ml-3" id="tableRow">
         Link:
         <a :href="entry.Link" target="_blank" class="lead">
@@ -43,6 +50,7 @@
           >Click Me</button>
         </a>
       </p>
+      <!-- Category Row -->
       <p class="h4 ml-3" id="tableRow">
         Category:
         <span class="lead">
@@ -65,6 +73,8 @@ export default {
     this.getRandomEntry();
   },
   methods: {
+    // getRandomEntry() calls the random entpoint of the API 
+    // and retrieves a random entry to display
     async getRandomEntry() {
       const response = await fetch("https://api.publicapis.org/random");
       const data = await response.json();
@@ -138,10 +148,8 @@ export default {
     font-size: 1.5rem !important;
     font-weight: 400 !important;
   }
-
   #tableRow {
     margin-left: -1rem !important;
   }
-
 }
 </style>

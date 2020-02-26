@@ -10,16 +10,18 @@ import AboutMe from "./components/AboutMe.vue"
 const routes = [
     {path: '/', component: EntryTable, displayName: "Home"},
     {path: '/category', component: CategoryView, displayName: "Categories"}, 
+    // Category needs a deeper routing
+    // We pass the category name in the url to use it as a prop and query param
     {path: '/category/:categoryName', component: CategoryEntryTable, props: true},
     {path: '/random', component: RandomEntry, displayName: "Random Entry"},
     {path: '/about', component: AboutMe, displayName: "About Me"},
+    // entry is named so thath we can pass objets to the props
     {
         path: '/entry', 
         name: "detailedEntry",
         component: EntryDetailed, 
         props: true
     },
-    
 ];
 
 export default routes;

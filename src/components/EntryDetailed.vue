@@ -1,32 +1,38 @@
 <template>
   <div id="entry-detailed">
+    <!-- Go back button -->
     <button
       @click="goBack"
       id="backButton"
       class="btn btn-secondary btn-lg ml-5 position-fixed"
     >Back</button>
+    <!-- Major entry card that gets displays -->
     <div class="jumbotron w-50 mx-auto" id="entryCard" ref="topElement">
       <h1 class="display-4">{{entry.API}}</h1>
       <p class="lead">{{entry.Description}}</p>
       <hr class="my-4" />
+      <!-- API Row -->
       <p class="h4 ml-3" id="tableRow">
         API:
         <span class="lead">
           <p class="ml-3">{{entry.Auth}}</p>
         </span>
       </p>
+      <!-- HTTPS Row -->
       <p class="h4 ml-3" id="tableRow">
         HTTPS:
         <span class="lead">
           <p class="ml-3">{{entry.HTTPS}}</p>
         </span>
       </p>
+      <!-- CORS Row -->
       <p class="h4 ml-3" id="tableRow">
         CORS:
         <span class="lead">
           <p class="ml-3">{{entry.Cors}}</p>
         </span>
       </p>
+      <!-- Link Row -->
       <p class="h4 ml-3" id="tableRow">
         Link:
         <a :href="entry.Link" target="_blank" class="lead">
@@ -38,6 +44,7 @@
           >Click Me</button>
         </a>
       </p>
+      <!-- Category Row -->
       <p class="h4 ml-3" id="tableRow">
         Category:
         <span class="lead">
@@ -45,11 +52,13 @@
         </span>
       </p>
     </div>
+    <!-- Beginning of related APIs -->
     <h3 class="text-center mb-5">
       ↓ Related
       <small class="text-muted">APIs</small> ↓
     </h3>
     <div class="row">
+      <!-- Related entries - looped -->
       <div v-for="relatedEntry in relatedEntries" :key="relatedEntry.API" class="col-sm">
         <div class="card w-75 hoverable mx-auto">
           <div class="card-body">
@@ -76,21 +85,29 @@
 export default {
   name: "entry-detailed",
   props: {
+    // entry passed the router-link
     entry: {}
   },
   data() {
     return {
+      // related entries by category
       relatedEntries: []
     };
   },
   beforeMount() {
+    // before mounting the component should fetch the related entries
     this.getRelatedEntries();
   },
   methods: {
+    // goes -1 back in the router history
     goBack() {
       window.history.length > 1 ? this.$router.go(-1) : this.$router.push("/");
     },
+    // retrieves related APIs by "random" picking up three other APIs where the category is matching
     async getRelatedEntries() {
+      // Category name may consist two words with a "&" beetween
+      // needs to be check and refined
+      // when "&" contained -> use only first word
       const refinedCategoryName =
         this.entry["Category"].indexOf("&") == -1
           ? this.entry.Category
@@ -100,6 +117,7 @@ export default {
       );
       const data = await response.json();
       const relatedEntriesArray = data["entries"];
+      // picked "randomly" three entries
       for (let i = 0; i < 3; i++) {
         const random = Math.floor(Math.random() * relatedEntriesArray.length);
         this.relatedEntries = [
@@ -108,6 +126,8 @@ export default {
         ];
       }
     },
+    // same as getRelatedAPIs()
+    // DIFFERENCE: is clearing the relatedEntries[] 
     async refreshRelatedEntries() {
       const refinedCategoryName =
         this.entry.Category.indexOf("&") == -1
@@ -127,6 +147,8 @@ export default {
         ];
       }
     },
+    // reloadComponent is invokes after clicking on a related entry
+    // new entries will be fetched and the window scrolled up
     async reloadComponent(relatedEntry) {
       this.entry = relatedEntry;
       this.refreshRelatedEntries();
@@ -152,5 +174,4 @@ export default {
     padding-top: 25%;
   }
 }
-
 </style>

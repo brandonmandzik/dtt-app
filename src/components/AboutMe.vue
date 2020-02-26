@@ -1,17 +1,22 @@
 <template>
   <div id="about-me">
+    <!-- Card for personal information -->
     <div class="card mb-5 mx-auto">
       <div class="row no-gutters">
+        <!-- img of me -->
         <div class="col-md-4">
           <img src="../assets/img/aboutme.jpeg" class="card-img" alt="..." />
         </div>
         <div class="col-md-8">
           <div class="card-body">
+            <!-- title -->
             <h5 class="card-title display-4">Mandzik, Brandon</h5>
+            <!-- job description -->
             <h6 class="card-subtitle text-muted mb-4">Software-Developer</h6>
+            <!-- introduction -->
             <p class="card-text">
               Hi, my name is Brandon.
-              <br />I'm a 22 y.o student from
+              <br />I'm a 21 y.o. student from
               <em>Berlin</em> and I'm enrolled for my 5th semester in the major "international Media & Computing" and employed for
               <em>spot9</em>.
               <br />For the company I design and develope mircro services in
@@ -19,6 +24,7 @@
               <br />My goal is to become a
               <em>full-stack developer</em> and develope microservices.
             </p>
+            <!-- Table -->
             <table class="table table-hover">
               <tbody class>
                 <tr>
@@ -31,8 +37,7 @@
                 </tr>
               </tbody>
             </table>
-
-
+            <!-- last updated -->
             <p class="card-text">
               <small class="text-muted">Last updated on 22th Feb 2020</small>
             </p>
