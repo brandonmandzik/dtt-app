@@ -15,7 +15,7 @@ const routes = [
     {path: '/category/:categoryName', component: CategoryEntryTable, props: true},
     {path: '/random', component: RandomEntry, displayName: "Random Entry"},
     {path: '/about', component: AboutMe, displayName: "About Me"},
-    // entry is named so thath we can pass objets to the props
+    // entry is named so that we can pass objets to the props
     {
         path: '/entry', 
         name: "detailedEntry",
