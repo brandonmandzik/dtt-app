@@ -21,6 +21,8 @@ Inside the project directory run the following from your CLI to start the server
 npm run serve // will run the server
 ```
 
+Or see the very last deployment at: https://brandonmandzik.github.io/dtt-app/
+
 
 
 
